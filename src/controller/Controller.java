@@ -30,6 +30,8 @@ public class Controller extends HttpServlet {
 			contatos(request, response);
 		} else if (action.equals("/insert")) {
 			novoContato(request, response);
+		} else if (action.equals("/select")) {
+			listarContato(request, response);
 		} else {
 			response.sendRedirect("index.html");
 		}
@@ -56,5 +58,13 @@ public class Controller extends HttpServlet {
 		dao.inserirContato(contato);
 		// Redirecionar para o documento agenda.jsp
 		response.sendRedirect("main");
+	}
+
+	// Editar Contato
+	protected void listarContato(HttpServletRequest request, HttpServletResponse response) {
+		// Recebimento do id do contato que será editado
+		String idcon = request.getParameter("idcon");
+		// Setar a variável JavaBeans
+		contato.setIdcon(idcon);
 	}
 }
