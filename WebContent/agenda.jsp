@@ -17,7 +17,6 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contat
 	<h1>Agenda de Contatos</h1>
 	<a href="novo.html" class="Botao1">Novo contato</a>
 	<table id="tabela">
-		<thread>
 		<tr>
 			<th>Id</th>
 			<th>Nome</th>
@@ -25,7 +24,6 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contat
 			<th>E-mail</th>
 			<th>Opções</th>
 		</tr>
-		</thread>
 		<tbody>
 			<%
 			for (int i = 0; i < lista.size(); i++) {
@@ -36,12 +34,15 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("contat
 				<td><%=lista.get(i).getFone()%></td>
 				<td><%=lista.get(i).getEmail()%></td>
 				<td><a href="select?idcon=<%=lista.get(i).getIdcon()%>"
-					class="Botao1">Editar</a></td>
+					class="Botao1">Editar</a> <a
+					href="javascript: confirmar(<%=lista.get(i).getIdcon()%>)"
+					class="Botao2">Excluir</a></td>
 			</tr>
 			<%
 			}
 			%>
 		</tbody>
 	</table>
+	<script src="scripts/confirmador.js"></script>
 </body>
 </html>
